@@ -201,7 +201,7 @@ ifeq ($(USE_LMDB), 1)
 	LIBRARIES += lmdb
 endif
 ifeq ($(USE_OPENCV), 1)
-	LIBRARIES += opencv_core opencv_highgui opencv_imgproc
+	LIBRARIES += opencv_imgcodecs opencv_core opencv_highgui opencv_imgproc
 endif
 PYTHON_LIBRARIES := boost_python python2.7
 WARNINGS := -Wall -Wno-sign-compare
@@ -320,8 +320,8 @@ endif
 # cuDNN acceleration configuration.
 ifeq ($(USE_CUDNN), 1)
 	LIBRARIES += cudnn
-	INCLUDE_DIRS += ${CUDNN_DIR}/include
-	LIBRARY_DIRS += ${CUDNN_DIR}/install/cuda/lib64
+	INCLUDE_DIRS += ${CUDA_INCLUDE_DIR}
+	LIBRARY_DIRS += ${CUDA_LIB_DIR}
 	COMMON_FLAGS += -DUSE_CUDNN
 endif
 
